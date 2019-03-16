@@ -1,0 +1,23 @@
+[
+    {
+        "id": "0f8a64da-0ae5-48ff-ab21-37c74f170926",
+        "name": "id",
+        "data_type": "FLOAT",
+        "min": 0,
+        "max": 100
+    },
+    {
+        "id": "e7fe5dc5-8216-47ac-a649-d35feb5e6108",
+        "name": "title",
+        "data_type": "INTEGER",
+        "min": 0,
+        "max": 999
+    },
+    {
+        "id": "e8934332-cd81-4648-9a0a-ec73c2f2c5fb",
+        "name": "Desc",
+        "data_type": "STRING",
+        "min": null,
+        "max": null
+    }
+]
