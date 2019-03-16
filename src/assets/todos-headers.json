@@ -1,14 +1,14 @@
 [
     {
         "id": "0f8a64da-0ae5-48ff-ab21-37c74f170926",
-        "name": "id",
+        "name": "Id",
         "data_type": "FLOAT",
         "min": 0,
         "max": 100
     },
     {
         "id": "e7fe5dc5-8216-47ac-a649-d35feb5e6108",
-        "name": "title",
+        "name": "Title",
         "data_type": "INTEGER",
         "min": 0,
         "max": 999

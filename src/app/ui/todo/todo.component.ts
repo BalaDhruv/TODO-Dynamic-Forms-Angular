@@ -11,18 +11,24 @@ import { Todo } from 'src/app/repos/model/todo';
 export class TodoComponent implements OnInit {
 
   public formGroup: FormGroup;
+  public formGroups: FormGroup[];
   public submitted: boolean;
   public headers: String[] = [];
+  public todos: number[] = [1, 2, 3, 4];
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todoService.getTodos().subscribe((todos: Todo[]) => {
+    this.todoService.getTodosHeaders().subscribe((todos: Todo[]) => {
       todos.forEach((todo: Todo) => {
         this.headers.push(todo.name);
         console.log(this.headers);
       });
     });
+  }
+
+  createFormGroup(todo: number) {
+
   }
 
 }
