@@ -4,6 +4,6 @@ Dynamically Form Form Group and Form controls been created.
 
 ## Demo
 
-<img src="app.png" width="400">
+<img src="app.png" width="100%">
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
