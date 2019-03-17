@@ -10,5 +10,24 @@ body{
 
     p, h1, h2, h3,h4,h5{
         margin: 0;
+        font-weight: normal;
+    }
+
+    input{
+        font-family: 'Sniglet', cursive;
+        background-color: transparent;
+        color: rgb(59, 57, 57);
+        text-align: center;
+        border: 0;
+        font-size: 20px;
+        width: 100%;
+    }
+
+    input:focus{
+        outline: none;
+    }
+
+    .cdk-live-announcer-element{
+        display: none;
     }
 }

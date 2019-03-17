@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/repos/services/todo.service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Todo } from 'src/app/repos/model/todo';
 
 @Component({
@@ -11,24 +11,40 @@ import { Todo } from 'src/app/repos/model/todo';
 export class TodoComponent implements OnInit {
 
   public formGroup: FormGroup;
-  public formGroups: FormGroup[];
   public submitted: boolean;
-  public headers: String[] = [];
-  public todos: number[] = [1, 2, 3, 4];
+  public headers: Todo[] = [];
+  public todos: any[] = [];
+  public today = (new Date()).toISOString();
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todoService.getTodosHeaders().subscribe((todos: Todo[]) => {
-      todos.forEach((todo: Todo) => {
-        this.headers.push(todo.name);
-        console.log(this.headers);
+    this.formGroup = new FormGroup({
+      master: new FormArray([])
+    });
+    this.todoService.getTodosHeaders().subscribe((headers: Todo[]) => {
+      this.headers = headers;
+      this.todoService.getTodos().subscribe((todos: any[]) => {
+        this.todos = todos;
+        console.log(this.todos);
+        this.formGroup = new FormGroup({
+          master: new FormArray(this.todos.map((todo) => this.createFormGroup(todo)))
+        });
       });
+      this.createFormGroup(headers);
     });
   }
 
-  createFormGroup(todo: number) {
+  get master() {
+    return this.formGroup.get('master') as FormArray;
+  }
 
+  createFormGroup(todo: any) {
+    var formControls: any = {};
+    this.headers.forEach((head: any) => {
+      formControls[head.name] = new FormControl({ value: head.name === 'Date' ? (new Date()).toISOString() : todo[head.name], disabled: head.name === 'Id' ? true : false }, [<any>Validators.min(head.min), <any>Validators.max(head.max)]);
+    });
+    return new FormGroup(formControls);
   }
 
 }

@@ -1,8 +1,8 @@
 
 export interface Todo {
-    id: String;
-    name: String;
-    data_type: String;
+    id: string;
+    name: string;
+    data_type: string;
     min: number;
     max: number;
 }

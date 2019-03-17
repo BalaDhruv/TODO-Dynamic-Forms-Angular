@@ -1,13 +1,29 @@
 <div class="header">
-  <h1>Todo</h1>
+  <h1>Dynamic Form TODO Application</h1>
 </div>
 <div class="body">
   <h3 class="head">Todos List</h3>
   <div class="todo-list">
-    <table>
-      <thead>
-        <td *ngFor="let head of headers">{{head}}</td>
-      </thead>
-    </table>
+    <form [formGroup]="formGroup">
+      <table formArrayName="master">
+        <thead>
+          <td *ngFor="let head of headers"><span>{{head.name}}</span></td>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of master.controls;let form=index;" [formGroupName]="form">
+            <td *ngFor="let head of headers">
+              <div class="date" *ngIf="head.name === 'Date'">
+                <input class="show-place-holder" [formControlName]="head.name" [max]="today" [matDatepicker]="picker"
+                  (keyup.enter)="picker.open()" (click)="picker.open()" placeholder="Date" size="10" readonly>
+                <mat-datepicker #picker></mat-datepicker>
+              </div>
+              <div class="elements" *ngIf="!(head.name === 'Date')"><input class="show-place-holder"
+                  [formControlName]="head.name"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
   </div>
 </div>

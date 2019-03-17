@@ -1,6 +1,13 @@
 [
     {
         "id": "0f8a64da-0ae5-48ff-ab21-37c74f170926",
+        "name": "Date",
+        "data_type": "DATE",
+        "min": 0,
+        "max": 100
+    },
+    {
+        "id": "0f8a64da-0ae5-48ff-ab21-37c74f170926",
         "name": "Id",
         "data_type": "FLOAT",
         "min": 0,
